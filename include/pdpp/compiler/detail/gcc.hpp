@@ -1,0 +1,20 @@
+#pragma once
+
+#define PDPP_COMPILER_GCC 1
+#define PDPP_COMPILER_GCC_STRING "GCC/G++"
+
+#ifdef __GNUC__
+
+#define PDPP_COMPILER PDPP_COMPILER_GCC
+#define PDPP_COMPILER_STRING PDPP_COMPILER_GCC_STRING
+
+#define PDPP_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+
+#ifdef __COUNTER__
+#define PDPP_COUNTER_AVAILABLE 1
+#define PDPP_COUNTER __COUNTER__
+#else
+#define PDPP_COUNTER_AVAILABLE 0
+#endif
+
+#endif

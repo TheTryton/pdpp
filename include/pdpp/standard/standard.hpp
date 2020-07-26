@@ -1,0 +1,18 @@
+#pragma once
+
+#define PDPP_CPP_STANDARD_VERSION __cplusplus
+
+#define PDPP_CPP_98 199711L
+#define PDPP_CPP_11 201103L
+#define PDPP_CPP_14 201402L
+#define PDPP_CPP_17 201703L
+#define PDPP_CPP_20 202002L
+
+#define PDPP_FILE __FILE__
+#define PDPP_LINE __LINE__
+#define PDPP_DATE __DATE__
+#define PDPP_TIME __TIME__
+
+#if (PDPP_CPP_STANDARD_VERSION >= PDPP_CPP_17) 
+#define PDPP_DEFAULT_ALIGNMENT __STDCPP_DEFAULT_NEW_ALIGNMENT__
+#endif

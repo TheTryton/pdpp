@@ -1,0 +1,307 @@
+#pragma once
+
+#include <pdpp/compiler/compiler.hpp>
+
+#if (PDPP_COMPILER == PDPP_COMPILER_GCC) || (PDPP_COMPILER == PDPP_COMPILER_CLANG) || (PDPP_COMPILER == PDPP_COMPILER_INTEL)
+
+#ifdef __SSE__
+#define PDPP_ARCH_X86_SSE 1
+#else
+#define PDPP_ARCH_X86_SSE 0
+#endif
+
+#ifdef __SSE2__
+#define PDPP_ARCH_X86_SSE2 1
+#else
+#define PDPP_ARCH_X86_SSE2 0
+#endif
+
+#ifdef __SSE3__
+#define PDPP_ARCH_X86_SSE3 1
+#else
+#define PDPP_ARCH_X86_SSE3 0
+#endif
+
+#ifdef __SSSE3__
+#define PDPP_ARCH_X86_SSSE3 1
+#else
+#define PDPP_ARCH_X86_SSSE3 0
+#endif
+
+#ifdef __SSE4_1__
+#define PDPP_ARCH_X86_SSE4_1 1
+#else
+#define PDPP_ARCH_X86_SSE4_1 0
+#endif
+
+#ifdef __SSE4_2__
+#define PDPP_ARCH_X86_SSE4_2 1
+#else
+#define PDPP_ARCH_X86_SSE4_2 0
+#endif
+
+#ifdef __AVX__
+#define PDPP_ARCH_X86_AVX 1
+#else
+#define PDPP_ARCH_X86_AVX 0
+#endif
+
+#ifdef __AVX2__
+#define PDPP_ARCH_X86_AVX2 1
+#else
+#define PDPP_ARCH_X86_AVX2 0
+#endif
+
+#ifdef __AVX512F__
+#define PDPP_ARCH_X86_AVX512F 1
+#else
+#define PDPP_ARCH_X86_AVX512F 0
+#endif
+
+#ifdef __AVX512PF__
+#define PDPP_ARCH_X86_AVX512PF 1
+#else
+#define PDPP_ARCH_X86_AVX512PF 0
+#endif
+
+#ifdef __AVX512ER__
+#define PDPP_ARCH_X86_AVX512ER 1
+#else
+#define PDPP_ARCH_X86_AVX512ER 0
+#endif
+
+#ifdef __AVX512CD__
+#define PDPP_ARCH_X86_AVX512CD 1
+#else
+#define PDPP_ARCH_X86_AVX512CD 0
+#endif
+
+#ifdef __AVX512VL__
+#define PDPP_ARCH_X86_AVX512VL 1
+#else
+#define PDPP_ARCH_X86_AVX512VL 0
+#endif
+
+#ifdef __AVX512BW__
+#define PDPP_ARCH_X86_AVX512BW 1
+#else
+#define PDPP_ARCH_X86_AVX512BW 0
+#endif
+
+#ifdef __AVX512DQ__
+#define PDPP_ARCH_X86_AVX512DQ 1
+#else
+#define PDPP_ARCH_X86_AVX512DQ 0
+#endif
+
+#ifdef __AVX512IFMA__
+#define PDPP_ARCH_X86_AVX512IFMA 1
+#else
+#define PDPP_ARCH_X86_AVX512IFMA 0
+#endif
+
+#ifdef __AVX512VBMI__
+#define PDPP_ARCH_X86_AVX512VBMI 1
+#else
+#define PDPP_ARCH_X86_AVX512VBMI 0
+#endif
+
+#ifdef __AVX512VBMI2__
+#define PDPP_ARCH_X86_AVX512VBMI2 1
+#else
+#define PDPP_ARCH_X86_AVX512VBMI2 0
+#endif
+
+#ifdef __AVX512BF16__
+#define PDPP_ARCH_X86_AVX512BF16 1
+#else
+#define PDPP_ARCH_X86_AVX512BF16 0
+#endif
+
+#ifdef __AVX512BITALG__
+#define PDPP_ARCH_X86_AVX512BITALG 1
+#else
+#define PDPP_ARCH_X86_AVX512BITALG 0
+#endif
+
+#ifdef __AVX512VPOPCNTDQ__
+#define PDPP_ARCH_X86_AVX512VPOPCNTDQ 1
+#else
+#define PDPP_ARCH_X86_AVX512VPOPCNTDQ 0
+#endif
+
+#ifdef __AVX5124FMAPS__
+#define PDPP_ARCH_X86_AVX5124FMAPS 1
+#else
+#define PDPP_ARCH_X86_AVX5124FMAPS 0
+#endif
+
+#ifdef __AVX5124VNNIW__
+#define PDPP_ARCH_X86_AVX5124VNNIW 1
+#else
+#define PDPP_ARCH_X86_AVX5124VNNIW 0
+#endif
+
+#ifdef __AVX512VP2INTERSECT__
+#define PDPP_ARCH_X86_AVX512VP2INTERSECT 1
+#else
+#define PDPP_ARCH_X86_AVX512VP2INTERSECT 0
+#endif
+
+#elif (PDPP_COMPILER == PDPP_COMPILER_MSVC)
+
+#ifdef _M_IX86_FP
+#if (_M_IX86_FP == 1)
+#define PDPP_ARCH_X86_SSE 1
+#define PDPP_ARCH_X86_SSE2 0
+#elif (_M_IX86_FP == 2)
+#define PDPP_ARCH_X86_SSE 1
+#define PDPP_ARCH_X86_SSE2 1
+#endif
+#else
+#define PDPP_ARCH_X86_SSE 0
+#define PDPP_ARCH_X86_SSE2 0
+#endif
+
+#ifdef __AVX__
+#define PDPP_ARCH_X86_AVX 1
+#define PDPP_ARCH_X86_SSE3 1
+#define PDPP_ARCH_X86_SSSE3 1
+#define PDPP_ARCH_X86_SSE4_1 1
+#else
+#define PDPP_ARCH_X86_AVX 0
+#define PDPP_ARCH_X86_SSE3 0
+#define PDPP_ARCH_X86_SSSE3 0
+#define PDPP_ARCH_X86_SSE4_1 0
+#endif
+
+#ifdef __AVX2__
+#define PDPP_ARCH_X86_AVX2 1
+#else
+#define PDPP_ARCH_X86_AVX2 0
+#endif
+
+#ifdef __AVX512F__
+#define PDPP_ARCH_X86_AVX512F 1
+#else
+#define PDPP_ARCH_X86_AVX512F 0
+#endif
+
+#ifdef __AVX512PF__
+#define PDPP_ARCH_X86_AVX512PF 1
+#else
+#define PDPP_ARCH_X86_AVX512PF 0
+#endif
+
+#ifdef __AVX512ER__
+#define PDPP_ARCH_X86_AVX512ER 1
+#else
+#define PDPP_ARCH_X86_AVX512ER 0
+#endif
+
+#ifdef __AVX512CD__
+#define PDPP_ARCH_X86_AVX512CD 1
+#else
+#define PDPP_ARCH_X86_AVX512CD 0
+#endif
+
+#ifdef __AVX512VL__
+#define PDPP_ARCH_X86_AVX512VL 1
+#else
+#define PDPP_ARCH_X86_AVX512VL 0
+#endif
+
+#ifdef __AVX512BW__
+#define PDPP_ARCH_X86_AVX512BW 1
+#else
+#define PDPP_ARCH_X86_AVX512BW 0
+#endif
+
+#ifdef __AVX512DQ__
+#define PDPP_ARCH_X86_AVX512DQ 1
+#else
+#define PDPP_ARCH_X86_AVX512DQ 0
+#endif
+
+#ifdef __AVX512IFMA__
+#define PDPP_ARCH_X86_AVX512IFMA 1
+#else
+#define PDPP_ARCH_X86_AVX512IFMA 0
+#endif
+
+#ifdef __AVX512VBMI__
+#define PDPP_ARCH_X86_AVX512VBMI 1
+#else
+#define PDPP_ARCH_X86_AVX512VBMI 0
+#endif
+
+#ifdef __AVX512VBMI2__
+#define PDPP_ARCH_X86_AVX512VBMI2 1
+#else
+#define PDPP_ARCH_X86_AVX512VBMI2 0
+#endif
+
+#ifdef __AVX512BF16__
+#define PDPP_ARCH_X86_AVX512BF16 1
+#else
+#define PDPP_ARCH_X86_AVX512BF16 0
+#endif
+
+#ifdef __AVX512BITALG__
+#define PDPP_ARCH_X86_AVX512BITALG 1
+#else
+#define PDPP_ARCH_X86_AVX512BITALG 0
+#endif
+
+#ifdef __AVX512VPOPCNTDQ__
+#define PDPP_ARCH_X86_AVX512VPOPCNTDQ 1
+#else
+#define PDPP_ARCH_X86_AVX512VPOPCNTDQ 0
+#endif
+
+#ifdef __AVX5124FMAPS__
+#define PDPP_ARCH_X86_AVX5124FMAPS 1
+#else
+#define PDPP_ARCH_X86_AVX5124FMAPS 0
+#endif
+
+#ifdef __AVX5124VNNIW__
+#define PDPP_ARCH_X86_AVX5124VNNIW 1
+#else
+#define PDPP_ARCH_X86_AVX5124VNNIW 0
+#endif
+
+#ifdef __AVX512VP2INTERSECT__
+#define PDPP_ARCH_X86_AVX512VP2INTERSECT 1
+#else
+#define PDPP_ARCH_X86_AVX512VP2INTERSECT 0
+#endif
+
+#else
+
+#define PDPP_ARCH_X86_SSE 0
+#define PDPP_ARCH_X86_SSE2 0
+#define PDPP_ARCH_X86_SSE3 0
+#define PDPP_ARCH_X86_SSSE3 0
+#define PDPP_ARCH_X86_SSE4_1 0
+#define PDPP_ARCH_X86_SSE4_2 0
+#define PDPP_ARCH_X86_AVX 0
+#define PDPP_ARCH_X86_AVX2 0
+#define PDPP_ARCH_X86_AVX512F 0
+#define PDPP_ARCH_X86_AVX512PF 0
+#define PDPP_ARCH_X86_AVX512ER 0
+#define PDPP_ARCH_X86_AVX512CD 0
+#define PDPP_ARCH_X86_AVX512VL 0
+#define PDPP_ARCH_X86_AVX512BW 0
+#define PDPP_ARCH_X86_AVX512DQ 0
+#define PDPP_ARCH_X86_AVX512IFMA 0
+#define PDPP_ARCH_X86_AVX512VBMI 0
+#define PDPP_ARCH_X86_AVX512VBMI2 0
+#define PDPP_ARCH_X86_AVX512BF16 0
+#define PDPP_ARCH_X86_AVX512BITALG 0
+#define PDPP_ARCH_X86_AVX512VPOPCNTDQ 0
+#define PDPP_ARCH_X86_AVX5124FMAPS 0
+#define PDPP_ARCH_X86_AVX5124VNNIW 0
+#define PDPP_ARCH_X86_AVX512VP2INTERSECT 0
+
+#endif

@@ -1,0 +1,30 @@
+#pragma once
+
+#include <pdpp/compiler/compiler.hpp>
+#include <pdpp/target/cpu_arch/detail/common.hpp>
+
+#if (PDPP_COMPILER == PDPP_COMPILER_GCC) || (PDPP_COMPILER == PDPP_COMPILER_CLANG) || (PDPP_COMPILER == PDPP_COMPILER_INTEL)
+
+#if defined(__i386__) && !defined(__x86_64__)
+#define PDPP_TARGET_CPU_ARCH PDPP_ARCH_X86
+#define PDPP_TARGET_CPU_ARCH_STRING PDPP_ARCH_X86_STRING
+#endif
+
+#ifdef __x86_64__
+#define PDPP_TARGET_CPU_ARCH PDPP_ARCH_X86_64
+#define PDPP_TARGET_CPU_ARCH_STRING PDPP_ARCH_X86_64_STRING
+#endif
+
+#elif (PDPP_COMPILER == PDPP_COMPILER_MSVC)
+
+#ifdef _M_IX86
+#define PDPP_TARGET_CPU_ARCH PDPP_ARCH_X86
+#define PDPP_TARGET_CPU_ARCH_STRING PDPP_ARCH_X86_STRING
+#endif
+
+#ifdef _M_X64
+#define PDPP_TARGET_CPU_ARCH PDPP_ARCH_X86_64
+#define PDPP_TARGET_CPU_ARCH_STRING PDPP_ARCH_X86_64_STRING
+#endif
+
+#endif
